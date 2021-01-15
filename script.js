@@ -1,3 +1,8 @@
+let initialDesign = "rugby0";
+let sponsorStatus = "sponsor-off";
+let oxenCenter =  document.getElementById("path-oxen-central").getAttribute("d");
+let oxenLeft =  document.getElementById("path-oxen-left").getAttribute("d");
+
 /* Identifty which color button was clicked */
 
 let color = document.getElementsByClassName("color");
@@ -37,11 +42,13 @@ function changeDesign(e) {
 	let pathThree = e.target.getAttribute("data-path-3");
 	let pathA = e.target.getAttribute("data-path-A");
 	let pathB = e.target.getAttribute("data-path-B");
+	let pathOxen = e.target.getAttribute("data-path-oxen");
 	let designOne = document.getElementById("path-1");
 	let designTwo = document.getElementById("path-2");
 	let designThree = document.getElementById("path-3");
 	let designA = document.getElementById("path-A");
 	let designB = document.getElementById("path-B");
+	let designOxen = document.getElementById("path-oxen");
 
 
 	designOne.setAttribute("d", pathOne);
@@ -49,10 +56,82 @@ function changeDesign(e) {
 	designThree.setAttribute("d", pathThree);
 	designA.setAttribute("d", pathA);
 	designB.setAttribute("d", pathB);
+	designOxen.setAttribute("d", pathOxen);
+
+	let dataDesign = e.target.getAttribute("data-design");
+	initialDesign = dataDesign;
+
+	if (initialDesign === "rugby3" && sponsorStatus === "sponsor-on") {
+		designOxen.setAttribute("d", oxenCenter);
+	} else {
+		designOxen.setAttribute("d", pathOxen);
+	}
+
 }
 
 
+/* Identifty which logo on/off button was clicked */
 
+let embOnOff = document.getElementsByClassName("emb");
+	for (let i = 0; i < embOnOff.length; i++) {
+		embOnOff[i].onclick = changeEmb;
+	}
+
+
+/* Change visibility of logo */
+
+
+function changeEmb(e) {
+
+	let path = e.target.getAttribute("data-path");
+	let embLogo = document.getElementById(path);
+	let embToggle = e.target.getAttribute("data-toggle");
+	let designOxen = document.getElementById("path-oxen");
+
+
+	if (embToggle === "off") {
+		embLogo.style.visibility = "hidden";
+	} else if (embToggle === "sponsor-off" && initialDesign === "rugby3") {
+		sponsorStatus = embToggle;
+		designOxen.setAttribute("d", oxenLeft);
+		embLogo.style.visibility = "hidden";
+	} else if (embToggle === "sponsor-off") {
+		sponsorStatus = embToggle;
+		embLogo.style.visibility = "hidden";
+	} else if (embToggle === "sponsor-on"  && initialDesign === "rugby3") {
+		sponsorStatus = embToggle;
+		designOxen.setAttribute("d", oxenCenter);
+		embLogo.style.visibility = "visible";
+	} else if (embToggle === "sponsor-on"  && initialDesign) {
+		sponsorStatus = embToggle;
+		embLogo.style.visibility = "visible";
+	} else {
+		embLogo.style.visibility = "visible";
+	}
+
+	console.log(sponsorStatus);
+
+	}
+
+/* Identifty which logo avriation button was clicked */
+
+let embVariation = document.getElementsByClassName("option");
+	for (let i = 0; i < embVariation.length; i++) {
+		embVariation[i].onclick = changeVariation;
+	}
+
+
+/* Change visibility of logo */
+
+
+function changeVariation(e) {
+
+	let path = e.target.getAttribute("data-path");
+	let embLogo = document.getElementById(path);
+	let embSrc = e.target.getAttribute("data-src");
+
+	embLogo.setAttribute("src", embSrc);
+}
 
 
 /*
