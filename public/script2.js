@@ -117,7 +117,7 @@ function changeLogos(e) {
 
 	if (logosToggle === "off") {
 		logosOverlay.style.visibility = "hidden";
-	} else if (logosToggle === "on") {
+	} else if (logosToggle === "on" && sponsorOnOff === "on") {
 		logosOverlay.style.visibility = "visible";
 		sponsorsOverlay.style.visibility = "hidden";
 		sponsorOnOff = "off";
@@ -134,6 +134,10 @@ function changeLogos(e) {
 
 		designPath1.setAttribute("d", currentPath1);
 		designPath2.setAttribute("d", currentPath2);
+	} else if (logosToggle === "on") {
+		logosOverlay.style.visibility = "visible";
+		sponsorsOverlay.style.visibility = "hidden";
+		sponsorOnOff = "off";
 	} 
 }
 
@@ -161,12 +165,12 @@ function changeSponsors(e) {
 	backupPath1 = tempPath1;
 	backupPath2 = tempPath2;
 
-	if (sponsorsToggle === "off") {
+	if (sponsorsToggle === "off" && sponsorOnOff === "on") {
 		sponsorsOverlay.style.visibility = "hidden";
 		sponsorOnOff = "off";
 		designPath1.setAttribute("d", currentPath1);
 		designPath2.setAttribute("d", currentPath2);
-	} else if (sponsorsToggle === "on") {
+	} else if (sponsorsToggle === "on" && sponsorOnOff === "off") {
 		sponsorsOverlay.style.visibility = "visible";
 		logosOverlay.style.visibility = "hidden";
 		sponsorOnOff = "on";
