@@ -191,6 +191,16 @@ main {
   	align-items: center;
 }
 
+.active {
+	border-color: #95c11f!important;
+}
+
+.active2 {
+	background-color: #95c11f;
+	color: #fff;
+}
+
+
 
 .design-select {
 	margin: 0px 1vw;

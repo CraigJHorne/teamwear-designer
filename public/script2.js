@@ -23,6 +23,18 @@ function changeColor(e) {
 	let pathChosen = e.target.getAttribute("data-path"); // Find which path to change colour of for the colour selected
 	let toneNew = e.target.getAttribute("tone"); // Find data-hex (colour) value for the colour selected
 
+
+
+	let classNew = e.target.getAttribute("class"); //Find current classes
+	let colorOption = classNew.replace("color ", "") //remove "color" class
+	let colorSelected = document.getElementsByClassName(colorOption); //get all elements with the remaining class
+	for (let i = 0; i < colorSelected.length; i++) {
+	colorSelected[i].classList.remove("active"); //remove active class from all these elements
+	}
+	classNew = classNew + " active"; // add active to current class
+	e.target.setAttribute("class", classNew); //change the colors class
+
+
 	let colorOverlay = document.getElementById(pathChosen); // Find the path that will be changed
 	colorOverlay.style.fill = hexNew; // Change colour of the path
 
@@ -52,6 +64,12 @@ let pattern = document.getElementsByClassName("shirt-pattern");
 function changePattern(e) {
 	let patternNew = e.target.getAttribute("data-path-pattern"); 
 
+	for (let i = 0; i < pattern.length; i++) {
+	pattern[i].classList.remove("active"); //remove active class from all pattern elements
+	}
+	classNew = "shirt-pattern" + " active"; // add active to current class
+	e.target.setAttribute("class", classNew); //change the patterns class
+
 	let patternOverlay = document.getElementById("path-pattern");
 	patternOverlay.setAttribute("src", patternNew);
 }
@@ -69,6 +87,12 @@ function changeDesign(e) {
 	let path1SNew = e.target.getAttribute("data-path-1s");
 	let path2SNew = e.target.getAttribute("data-path-2s");
 	let chosenDesign = e.target.getAttribute("data-design");
+
+	for (let i = 0; i < design.length; i++) {
+	design[i].classList.remove("active"); //remove active class from all design elements
+	}
+	classNew = "shirt-design" + " active"; // add active to current class
+	e.target.setAttribute("class", classNew); //change the designs class
 
 	currentDesign = chosenDesign;
 
@@ -108,11 +132,21 @@ let logos = document.getElementsByClassName("logos");
 		logos[i].onclick = changeLogos;
 	}
 
+for (let i = 0; i < logos.length; i++) {
+		logosOff = logos[1];
+	}
+
 function changeLogos(e) {
 	let logosToggle = e.target.getAttribute("data-logos");
 	
 	let logosOverlay = document.getElementById("path-logos");
 	let sponsorsOverlay = document.getElementById("path-sponsors");
+
+	for (let i = 0; i < logos.length; i++) {
+	logos[i].classList.remove("active2"); //remove active class from all logo elements
+	}
+	classNew = "emb logos" + " active2"; // add active to current class
+	e.target.setAttribute("class", classNew); //change the logos class
 
 
 	if (logosToggle === "off") {
@@ -121,6 +155,11 @@ function changeLogos(e) {
 		logosOverlay.style.visibility = "visible";
 		sponsorsOverlay.style.visibility = "hidden";
 		sponsorOnOff = "off";
+
+		for (let i = 0; i < sponsors.length; i++) {
+		sponsors[0].classList.remove("active2"); //remove active class from on sponsor element
+		}
+		sponsorsOff.classList.add("active2"); //add active class to off sponsor element
 
 		let designPath1 = document.getElementById("path-1");
 		let designPath2 = document.getElementById("path-2");
@@ -149,6 +188,11 @@ let sponsors = document.getElementsByClassName("sponsors");
 		sponsors[i].onclick = changeSponsors;
 	}
 
+for (let i = 0; i < sponsors.length; i++) {
+		sponsorsOff = sponsors[1];
+	}
+
+
 function changeSponsors(e) {
 	let sponsorsToggle = e.target.getAttribute("data-sponsors");
 	
@@ -157,6 +201,12 @@ function changeSponsors(e) {
 
 	let designPath1 = document.getElementById("path-1");
 	let designPath2 = document.getElementById("path-2");
+
+	for (let i = 0; i < sponsors.length; i++) {
+	sponsors[i].classList.remove("active2"); //remove active class from all sponsor elements
+	}
+	classNew = "emb sponsors" + " active2"; // add active to current class
+	e.target.setAttribute("class", classNew); //change the sponsor class
 
 	tempPath1 = currentPath1;
 	tempPath2 = currentPath2;
@@ -176,5 +226,10 @@ function changeSponsors(e) {
 		sponsorOnOff = "on";
 		designPath1.setAttribute("d", currentPath1);
 		designPath2.setAttribute("d", currentPath2);
+
+		for (let i = 0; i < logos.length; i++) {
+		logos[0].classList.remove("active2"); //remove active class from all logo elements
+		}
+		logosOff.classList.add("active2"); //add active class to off sponsor element
 	} 
 }
