@@ -6,8 +6,8 @@ sponsorSrc = ("images/pro/sponsors" + currentDesign + bgTone + path1Tone + ".svg
 sponsorOnOff = "off";
 currentPath1 = "";
 backupPath1 = "";
-currentPath2 = "";
-backupPath2 = "";
+currentPath2 = "";  //for sponsors
+backupPath2 = ""; //for sponsors
 
 /* Identifty which color button was clicked */
 
